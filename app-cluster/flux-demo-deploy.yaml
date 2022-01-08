@@ -10,7 +10,7 @@ spec:
     name: nginx-demo
     namespace: flux-demo
   interval: 1m0s
-  path: .
+  path: ./workloads/
   prune: true
   sourceRef:
     kind: GitRepository
