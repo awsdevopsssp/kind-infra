@@ -8,7 +8,7 @@ spec:
   healthChecks:
   - kind: Deployment
     name: nginx-dev
-    namespace: 
+    namespace: develop
   interval: 1m0s
   path: ./manifests
   prune: true
@@ -28,7 +28,7 @@ spec:
   healthChecks:
   - kind: Deployment
     name: nginx-qa
-    namespace: flux-demo
+    namespace: qa
   interval: 1m0s
   path: ./manifests
   prune: true
