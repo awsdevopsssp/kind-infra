@@ -10,15 +10,15 @@ spec:
     branch: main
   url: https://github.com/awsdevopsssp/dev-app
 
-# ---
-# apiVersion: source.toolkit.fluxcd.io/v1beta1
-# kind: GitRepository
-# metadata:
-#   name: qa-app-infra
-#   namespace: flux-system
-# spec:
-#   interval: 30s
-#   ref:
-#     branch: main
-#   url: https://github.com/awsdevopsssp/qa-app
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: qa-app-infra
+  namespace: flux-system
+spec:
+  interval: 30s
+  ref:
+    branch: main
+  url: https://github.com/awsdevopsssp/qa-app
   
