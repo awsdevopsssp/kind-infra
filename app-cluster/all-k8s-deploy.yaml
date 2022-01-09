@@ -18,22 +18,22 @@ spec:
   timeout: 2m0s
   validation: client
 
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
-kind: Kustomization
-metadata:
-  name: qa-app-deploy
-  namespace: flux-system
-spec:
-  healthChecks:
-  - kind: Deployment
-    name: nginx-qa
-    namespace: qa
-  interval: 1m0s
-  path: ./manifests
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: qa-app-infra
-  timeout: 2m0s
-  validation: client
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+# kind: Kustomization
+# metadata:
+#   name: qa-app-deploy
+#   namespace: flux-system
+# spec:
+#   healthChecks:
+#   - kind: Deployment
+#     name: nginx-qa
+#     namespace: qa
+#   interval: 1m0s
+#   path: ./manifests
+#   prune: true
+#   sourceRef:
+#     kind: GitRepository
+#     name: qa-app-infra
+#   timeout: 2m0s
+#   validation: client
