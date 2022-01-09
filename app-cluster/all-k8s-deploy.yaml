@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
 metadata:
-  name: argocd-k8s-deploy
+  name: dev-app-deploy
   namespace: flux-system
 spec:
   healthChecks:
@@ -22,7 +22,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
 metadata:
-  name: flux-demo-deploy
+  name: qa-app-deploy
   namespace: flux-system
 spec:
   healthChecks:
