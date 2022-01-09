@@ -8,13 +8,13 @@ spec:
   healthChecks:
   - kind: Deployment
     name: nginx-dev
-    namespace: argocd-k8s
+    namespace: 
   interval: 1m0s
-  path: ./yamls
+  path: ./manifests
   prune: true
   sourceRef:
     kind: GitRepository
-    name: argocd-k8s-infra
+    name: dev-app-infra
   timeout: 2m0s
   validation: client
 
@@ -27,13 +27,13 @@ metadata:
 spec:
   healthChecks:
   - kind: Deployment
-    name: nginx-demo
+    name: nginx-qa
     namespace: flux-demo
   interval: 1m0s
-  path: ./dev
+  path: ./manifests
   prune: true
   sourceRef:
     kind: GitRepository
-    name: flux-demo-infra
+    name: qa-app-infra
   timeout: 2m0s
   validation: client
