@@ -2,21 +2,19 @@
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: nodejs-dev
+  name: podinfo-prod
   namespace: dev
   annotations:
     fluxcd.io/automated: "true"
-    filter.fluxcd.io/chart-image: glob:dev-*
+    filter.fluxcd.io/chart-image: semver:~0.4
 spec:
-  releaseName: nodejs-dev
+  releaseName: podinfo-prod
   chart:
     git: https://github.com/awsdevopsssp/kind-infra
     path: charts/nodejs
     ref: develop
   values:
     image:
-      repository: tmforumorg/odl_sandbox
-      tag: usage
+      repository: stefanprodan/podinfo
+      tag: 0.4.10
     replicaCount: 1
-    hpa:
-      enabled: false
