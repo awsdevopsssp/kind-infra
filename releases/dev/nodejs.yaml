@@ -1,0 +1,22 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: nodejs-dev
+  namespace: dev
+  annotations:
+    fluxcd.io/automated: "true"
+    filter.fluxcd.io/chart-image: glob:dev-*
+spec:
+  releaseName: nodejs-dev
+  chart:
+    git: https://github.com/awsdevopsssp/kind-infra
+    path: charts/nodejs
+    ref: develop
+  values:
+    image:
+      repository: tmforumorg/odl_sandbox
+      tag: usage
+    replicaCount: 1
+    hpa:
+      enabled: false
