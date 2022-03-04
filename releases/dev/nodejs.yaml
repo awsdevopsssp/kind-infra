@@ -3,14 +3,14 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: podinfo-prod
-  namespace: dev
+  namespace: flux-system
   # annotations:
   #   fluxcd.io/automated: "true"
   #   filter.fluxcd.io/chart-image: semver:~0.4
 spec:
   releaseName: podinfo-prod
   chart:
-    git: https://github.com/awsdevopsssp/kind-infra
+    git: git@github.com:awsdevopsssp/kind-infra.git
     path: charts/nodejs
     ref: develop
   values:
