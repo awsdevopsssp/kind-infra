@@ -1,0 +1,55 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: ssp-repo
+  namespace: dev
+spec:
+  interval: 1h
+  timeout: 1m0s
+  url: https://github.com/awsdevopsssp/kind-infra
+  branch: develop
+
+
+# ---
+# apiVersion: source.toolkit.fluxcd.io/v1beta1
+# kind: HelmChart
+# metadata:
+#   name: semics-go-ctlr
+#   namespace: flux-system
+# spec:
+#   chart: semics-go-ctlr
+#   version: 0.0.4
+#   sourceRef:
+#     name: semics-go-helmrepo
+#     kind: HelmRepository
+#   interval: 5m
+
+# ---
+# apiVersion: helm.toolkit.fluxcd.io/v2beta1
+# kind: HelmRelease
+# metadata:
+#   name: semics-go-ctlr
+#   namespace: flux-system
+# spec:
+#   chart:
+#     spec:
+#       chart: semics-go-ctlr
+#       interval: 1m
+#       reconcileStrategy: ChartVersion
+#       sourceRef:
+#         kind: HelmRepository
+#         name: semics-go-ctlr
+#       version: 0.0.4
+#   interval: 5m
+#   install:
+#     remediation:
+#       retries: 3
+#   upgrade:
+#     remediation:
+#       remediateLastFailure: false
+#   values:
+#     resources:
+#       requests:
+#         cpu: 100m
+#         memory: 64Mi 
