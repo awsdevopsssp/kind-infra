@@ -1,13 +1,13 @@
 {{- if .Values.ingress.enabled -}}
-{{- $fullName := include "tmf635-usage.fullname" . -}}
+{{- $fullName := include "podinfo.fullname" . -}}
 {{- $ingressPath := .Values.ingress.path -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ $fullName }}
   labels:
-    app: {{ template "tmf635-usage.name" . }}
-    chart: {{ template "tmf635-usage.chart" . }}
+    app: {{ template "podinfo.name" . }}
+    chart: {{ template "podinfo.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 {{- with .Values.ingress.annotations }}
@@ -29,6 +29,14 @@ spec:
   {{- range .Values.ingress.hosts }}
     - host: {{ . }}
       http:
+        paths:
+          - path: {{ $ingressPath }}
+            backend:
+              serviceName: {{ $fullName }}
+              servicePort: http
+  {{- end }}
+  {{- if not .Values.ingress.hosts }}
+    - http:
         paths:
           - path: {{ $ingressPath }}
             backend:
