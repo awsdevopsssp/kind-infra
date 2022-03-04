@@ -1,3 +1,4 @@
+---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -16,3 +17,20 @@ spec:
       interval: 1m
   values:
     replicaCount: 1
+
+# ---
+
+# apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+# kind: Kustomization
+# metadata:
+#   name: kust-helm-release
+#   namespace: flux-system
+# spec:
+#   force: false
+#   interval: 2m
+#   path: ./charts/podinfo
+#   prune: true
+#   sourceRef:
+#     kind: GitRepository
+#     name: podinfo
+#   validation: client
